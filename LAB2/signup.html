@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <link rel="stylesheet" type="text/css" href = "main.css">
+        <title>Sign Up Page</title>
+    </head>
+    <body>
+        <h1>Create Your ID</h1>
+        <h3>Do you already have an ID? <a href="login.html">Log in</a></h4>
+        <form method = "GET" action = "signup.html">
+            <h5>Enter your Personal Info</h5>
+            <p>
+                <label>Name <input name = "name" type = "text" autofocus required></label>
+            </p>
+            <p>
+                <label>Birth Date <input name = "birthday" type = "date" required></label>(YYYY-MM-DD)
+            </p>
+            <h5>Please answer this question for 1 sec for our information survey(Not necessary)</h5>
+            <p>
+                <label>How many medicines do you take a day? <input name = "pills" type="number" step="1" min="0"></label>
+            </p>
+            <br>
+            <h5>This will be your new ID and password.</h5>
+            <p>
+                <label>Email <input name = "email" type = "email" placeholder = "name@domain.com" required></label>
+            </p>
+            <p>
+                <label>Password <input name = "password" type="password" required></label>
+            </p>
+            <br>
+            <h5>Be sure to enter a phone number you can always access. 
+                It will be used to verify your identity any time you sign in on a new device or web browser. 
+                Messaging or data rates may apply.
+            </h5>
+            <p>
+                <label>Phone Number <input name = "number" type = "tel" placeholder = "01012345678" pattern = "[0-9]{10}" size="11" required /></label>
+            </p>
+            <p>
+                Verify with:
+                <input type="radio" id="text" name = "verify">
+                <label for="Accept">Text Message</label>
+                <input type = "radio" id="call" name = "verify">
+                <label for="Disagree">Phone call</label>
+            </p>
+            <p>
+                <input type="checkbox" id="announcement" name="announcement" value="announcement">
+                <label for="announcement">Announcement</label><br>
+                Get announcements, recommendations, and updates about services.<br>
+                <input type="checkbox" id="releases" name="releases" value="releases">
+                <label for="releases">Releases</label><br>
+                Get new releases, exclusive content, special offers, and recommendations for drugs, medical treatments and more.<br>
+                <input type="checkbox" id="newsletter" name="newsletter" value="newsletter">
+                <label for="newsletter">Newsletter</label><br>
+                The best stories, picked by our News editors, delivered right to your inbox.<br>
+            </p>
+            
+            <input type = "submit" value="Join">
+            <input type = "reset" value="Reset">
+
+        </form>
+
+    </body>
+</html>
