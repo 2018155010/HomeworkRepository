@@ -9,19 +9,24 @@ body{
 }
 div{
     display: block;
-    float: center;
+    width:100%;
     text-align: left;
     margin-top: 10px;
     margin-bottom: 10px;
-
     padding-top: 4px;
     padding-bottom: 4px;
 }
+
+div.signup{
+    display:block;
+    block-size: auto;
+    padding: 0;
+    margin: -0.004em;
+}
+
 #selection{
-    margin-top: -0.15em;
-    padding: 16px;
-    padding-top: 30px;
-    padding-left: 20px;
+    width: 88%;
+    padding: 16pt;
     background-color: rgb(255, 255, 255);
     border: 1px solid #000000;
     border-radius: 4px;
@@ -64,16 +69,19 @@ h5{
     font-weight: 500;
     letter-spacing: -0.016em;
     width:fit-content;
-    height:fit-content;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 h6{
     font-size: 16px;
     font-weight:400;
     margin-top: -0.1em;
-    margin-bottom: -0.6em;
+    margin-bottom: -0.1em;
     letter-spacing: -0.022em;
 }
 p{
+    margin-block-start: 0.4em;
+    margin-block-end: 0.4em;
     font-size: 14px;
     font-weight: 300;
     color: #757575;
@@ -85,7 +93,9 @@ a{
 }
 
 input[type=text] {
-    width: 100%;
+    width: 90%;
+    height: 1.2em;
+    font-size: 12pt;
     margin: 8px 0;
     padding: 16px 16px;
     display: inline-block;
@@ -94,7 +104,9 @@ input[type=text] {
 }
 
 input[type=email] {
-    width: 100%;
+    width: 90%;
+    height: 1.2em;
+    font-size: 12pt;
     margin: 8px 0;
     padding: 16px 16px;
     display: inline-block;
@@ -103,7 +115,9 @@ input[type=email] {
 }
 
 input[type=password] {
-    width: 100%;
+    width: 90%;
+    height: 1.2em;
+    font-size: 12pt;
     margin: 8px 0;
     padding: 16px 16px;
     display: inline-block;
@@ -112,7 +126,9 @@ input[type=password] {
 }
 
 input[type=date] {
-    width: 100%;
+    width: 90%;
+    height: 1.2em;
+    font-size: 12pt;
     margin: 8px 0;
     padding: 16px 16px;
     display: inline-block;
@@ -121,7 +137,9 @@ input[type=date] {
 }
 
 input[type=tel] {
-    width: 100%;
+    width: 90%;
+    height: 1.2em;
+    font-size: 12pt;
     margin: 8px 0;
     padding: 16px 16px;
     display: inline-block;
@@ -130,7 +148,9 @@ input[type=tel] {
 }
 
 input[type=number] {
-    width: 100%;
+    width: 90%;
+    height: 1.2em;
+    font-size: 12pt;
     margin: 8px 0;
     padding: 16px 16px;
     display: inline-block;
@@ -139,7 +159,7 @@ input[type=number] {
 }
 
 input[type=submit]{
-    width: 100%;
+    width: 97%;
     background-color: black;
     color: white;
     font-size: 14px;
@@ -151,7 +171,7 @@ input[type=submit]{
 }
 
 input[type=reset]{
-    width: 100%;
+    width: 97%;
     background-color: black;
     color: white;
     font-size: 14px;

@@ -13,8 +13,14 @@
         <div>
             <h2>Sign in to our Store.</h2>
             <form method="get" autocomplete="on" action="login.html">
-                <h5><label>User ID<br> <input type="text" name="userID" placeholder="Enter your name" autofocus required></label></h5>
-                <h5><label>Password<br> <input type="password" name="userPW" required></label></h5>
+                <h5><label for="userID">User ID<br> </label></h5>
+                <signup>
+                    <input type="text" id="userID" placeholder="Enter your name" autofocus required>
+                </signup>
+                <h5><label for ="userPW">Password<br> </label></h5>
+                <signup>
+                    <input type="password" id="userPW" required>
+                </signup>
                 <input type="submit" value="Enter">
             </form>
         </div>
