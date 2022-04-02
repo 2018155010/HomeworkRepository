@@ -3,17 +3,17 @@ html{
 }
 body{
     align-items: center;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-top: 2%;
 }
 div{
     display: block;
     float: center;
     text-align: left;
-    margin-left: 20%;
-    margin-right: 20%;
     margin-top: 10px;
     margin-bottom: 10px;
+
     padding-top: 4px;
     padding-bottom: 4px;
 }
@@ -30,7 +30,7 @@ div{
 h1{
     font-size: 38px;
     font-weight: bold;
-    line-height: 1.0;
+    line-height: 1.115;
     text-align: center;
     letter-spacing: -0.011em;
     margin-bottom: -0.100em;
