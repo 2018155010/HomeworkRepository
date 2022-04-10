@@ -21,6 +21,11 @@ body{
     align-content: center;
     padding-top: 2%;
 }
+footer{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin: auto;
+}
 
 
 /*For content block*/
@@ -38,7 +43,7 @@ div{
 div.col1-1{
     width:1020px;
     padding: 32px 0;
-    margin-top: 30px;
+    margin-top: 0px;
     margin-bottom: 20px;
 }
 
@@ -69,8 +74,8 @@ div.imageBox{
     height: 230px;
     display:inline-block;
     margin: auto;
-    padding: 10px auto;
     border: 1px solid #000000;
+    background-color: #f5f5f5;
 }
 
 
@@ -174,6 +179,7 @@ price{
     display:block;
     font-size: 16px;
     font-weight:500;
+    color:#757575;
     letter-spacing: -0.015em;
     line-height: 1.6;
     margin: 0 0 8px 0;
@@ -186,7 +192,7 @@ a{
 .category{
     display:inline-block;
     font-size:16px;
-    font-weight:300;
+    font-weight:400;
     margin:0 8px;
     padding:0 8px;
     color: rgb(255, 255, 255);
@@ -194,10 +200,11 @@ a{
 .member{
     display:inline-block;
     font-size:16px;
-    font-weight:400;
+    font-weight:100;
+    color:darkseagreen;
+    text-align:right;
     margin:0 8px;
     padding:0 8px;
-    color: white;
 }
 
 form{
@@ -304,7 +311,7 @@ img>list{
 }
 
 img>banner{
-    margin: 0;
+    margin:auto;
     padding: 0;
 }
 
@@ -312,7 +319,7 @@ img>banner{
 
 /*style*/
 .mainColor{
-    background-color: rgb(236, 255, 222);
+    background-color: #ffffff;
 }
 
 .infoColor{
@@ -331,20 +338,30 @@ img>banner{
 
 /*animation*/
 @keyframes slide{
-    0%{margin-left: 1020px;
-       color:#f5f5f5}
-    100%{margin-left: 0%;
-    color:#000000;}
+    0%{
+        margin-left: 1020px;
+        color:#f5f5f5;
+    }
+
+    100%{
+        margin-left: 0%;
+        color:#000000;
+    }
 }
 
 h3.slide{
     animation-name:slide;
     animation-duration:2s;
 }
-img.banner:hover{
-    transform: rotate(360deg);
-}
+
 img.list:hover{
-    transform: scale(1.15, 1.15);
+    transform: scale(1.7, 1.7);
     transition-duration: 2s;
+    transition-timing-function: ease-in-out;
+}
+
+img.banner:hover{
+    transform:rotate(360deg);
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
 }
