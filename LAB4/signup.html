@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <link rel="stylesheet" type="text/css" href = "main.css">
+        <title>Sign Up Page</title>
+    </head>
+    <body>
+        <div>
+            <div class="signup">
+                <h1>Create Your ID</h1>
+                <h3 class="centerText">Do you already have an ID? <a href="login.html">Log in</a></h4>
+            </div>
+            <div class="log">
+                <form method = "GET" action = "signup.html">
+                    <h2>Enter your Personal Info</h2>
+                    <h5>
+                        <label for="name">Name</label>
+                    </h5>
+                    <div class="signup">
+                        <input id = "name" type = "text" autofocus required placeholder="Johnny Appleseed">
+                    </div>
+
+                    <h5>
+                        <label for="birthday">Birth Date (YYYY-MM-DD)</label>
+                    </h5>
+                    <div class="signup">
+                        <input id = "birthday" type = "date" required>
+                    </div>
+                    <h4>Please answer this question for 1 sec for our information survey(Not necessary)</h4>
+                    <p>
+                        <label for="pills">How many medicines do you take a day?</label>
+                    </p>
+                    <div class="signup">
+                        <input id = "pills" type="number" step="1" min="0">
+                    </div>
+                </form>
+            </div>
+            <div class="log">
+                <form method = "GET" action = "signup.html">
+                    <h2>This will be your new ID and password.</h2>
+                    <h5>
+                        <label for="email">Email</label>
+                    </h5>
+                    <div class="signup">
+                        <input id = "email" type = "email" placeholder = "name@domain.com" required>
+                    </div>
+                    <h5>
+                        <label for="password">Password</label>
+                    </h5>
+                    <div class="signup">
+                        <input id = "password" type="password" required>
+                    </div>
+                </form>
+            </div>
+            <div class="log">
+                <h2>How to Contact You.</h2>
+                <form method = "GET" action = "signup.html">
+                    <h4>Be sure to enter a phone number you can always access. 
+                        It will be used to verify your identity any time you sign in on a new device or web browser. 
+                        Messaging or data rates may apply.
+                    </h4>
+                    <h5>
+                        <label for="pNumber">Phone Number</label>
+                    </h5>
+                    <div class="signup">
+                        <input id = "pNumber" type = "tel" placeholder = "01012345678" pattern = "[0-9]{10}" size="11" required />
+                    </div>
+                    <h5>
+                        Verify with: 
+                        <input type="radio" id="text" name = "verify">
+                        <label for="text">Text Message</label>
+                        <input type = "radio" id="call" name = "verify">
+                        <label for="call">Phone call</label>
+                    </h5>
+                </form>
+            </div>
+            <div class="log">
+                <div id="selection">
+                    <form method = "GET" action="signup.html">
+                        <h6>
+                            <input type="checkbox" id="announcement" name="announcement" value="announcement">
+                            <label for="announcement">Announcement</label>
+                        </h6>
+                        <div class="signup">
+                            <p>
+                                Get announcements, recommendations, and updates about services.
+                            </p>
+                        </div>
+                        
+                        <h6>
+                            <input type="checkbox" id="releases" name="releases" value="releases">
+                            <label for="releases">Releases</label>
+                        </h6>
+                        <div class="signup">
+                            <p>
+                                Get new releases, exclusive content, special offers, and recommendations for drugs, medical treatments and more.
+                            </p>
+                        </div>
+                        
+                        <h6>
+                            <input type="checkbox" id="newsletter" name="newsletter" value="newsletter">
+                            <label for="newsletter">Newsletter</label>
+                        </h6>
+                        <div class="signup">
+                            <p>
+                                The best stories, picked by our News editors, delivered right to your inbox.
+                            </p>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+            
+            <div class="log">
+                <div class="signup">
+                    <input type = "submit" value="Join">
+                    <input type = "reset" value="Reset">
+                </div>
+            </div>
+        </div>
+           
+        
+    </body>
+</html>
