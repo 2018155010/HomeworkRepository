@@ -348,7 +348,7 @@ input[type=reset]{
 /*animation*/
 @keyframes slide{
     0%{
-        margin-left: 1020px;
+        margin-left: 100%;
         color:#a5ff97;
     }
 
