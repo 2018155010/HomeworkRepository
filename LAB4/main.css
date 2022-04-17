@@ -31,38 +31,16 @@ html{
     flex:25%;
     max-width:24%;
     padding: 0 4px;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-@media screen and (min-width: 481px) and (max-width: 800px){
-    .nav a{
-        flex-direction:column;
-    }
-    .column{
-        flex:50%;
-        max-width: 48%;
-    }
-    .imageBox{
-        flex:100%;
-        width: 100%;
-    }
-    
+.column img{
+    margin-top: 4px;
+    vertical-align:middle;
 }
 
-@media screen and (max-width: 480px){
-    .nav a{
-        flex-direction: column;
-    }
-    .column{
-        flex:100%;
-        max-width: 100%;
 
-    }
-    .imageBox{
-        flex:100%;
-        width: 100%;
-    }
-}
+
 
 
 
@@ -105,6 +83,8 @@ div{
 .col1-1{
     /*width:1020px;
     justify-content: center;*/
+    flex:100%;
+    flex-wrap: wrap;;
     padding: 32px 0;
     margin-top: 0px;
     margin-bottom: 20px;
@@ -113,8 +93,9 @@ div{
 .itemlist{
     /*width:1020px;
     justify-content: center;*/
-    display:flex;
+    flex:100%;
     flex-wrap:wrap;
+    align-items:center;
     padding: 0 4px;
     margin-top: 64px;
     margin-bottom: 20px;
@@ -368,10 +349,6 @@ img{
     margin:auto;
 }
 
-img>list{
-    margin-top: 20px;
-}
-
 img>banner{
     margin:auto;
     padding: 0;
@@ -416,7 +393,7 @@ h3.slide{
     animation-duration:2s;
 }
 
-img.list:hover{
+.column img:hover{
     transform: scale(1.5, 1.5);
     transition-duration: 2s;
     transition-timing-function: ease-in-out;
@@ -426,4 +403,30 @@ img.banner:hover{
     transform:rotate(360deg);
     transition-duration: 2s;
     transition-timing-function: ease-in-out;
+}
+
+/*responsive*/
+@media screen and (max-width: 480px){
+    .nav a{
+        flex-direction: column;
+    }
+    .column{
+        flex:100%;
+        max-width: 100%;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .nav a{
+        flex-direction:column;
+    }
+    .column{
+        flex:50%;
+        max-width: 48%;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    
 }
