@@ -1,74 +1,150 @@
 [
     {
-      "name" : "baked beans",
-      "price" : 0.40,
-      "image" : "beans.jpg",
-      "type" : "vegetables"
+      "postId" : 1,
+      "name" : "Super Green Powder",
+      "price" : 7.41,
+      "image" : "SuperGreenPowder.jpg",
+      "type" : "Anytizer"
     },
     {
-      "name" : "hot dogs",
-      "price" : 1.99,
-      "image" : "hotdogs.jpg",
-      "type" : "meat"
+      "postId" : 1,
+      "name" : "Daily Protein Shake",
+      "price" : 2.75,
+      "image" : "DailyProteinShake.png",
+      "type" : "Anytizer"
     },
     {
-      "name" : "spam",
-      "price" : 2.85,
-      "image" : "spam.jpg",
-      "type" : "meat"
+      "postId" : 1,
+      "name" : "High Protein Granola Cereal",
+      "price" : 4.65,
+      "image" : "HighProteinGranolaCereal.jpg",
+      "type" : "Anytizer"
     },
     {
-      "name" : "refried beans",
+      "postId" : 1,
+      "name" : "Premiun Handmade Granola",
       "price" : 0.99,
-      "image" : "refried.jpg",
-      "type" : "vegetables"
+      "image" : "PremiumHandmadeGranola.jpg",
+      "type" : "Anytizer"
     },
     {
-      "name" : "kidney beans",
-      "price" : 0.58,
-      "image" : "kidney.jpg",
-      "type" : "vegetables"
+      "postId" : 1,
+      "name" : "Premium Handmade Granola Bar",
+      "price" : 2.56,
+      "image" : "PremiumHandmadeGranolaBar.jpg",
+      "type" : "Anytizer"
     },
     {
-      "name" : "garden peas",
-      "price" : 0.52,
-      "image" : "gardenpeas.jpg",
-      "type" : "vegetables"
+      "postId" : 1,
+      "name" : "All day Green Water",
+      "price" : 1.66,
+      "image" : "AlldayGreenWater.jpg",
+      "type" : "Energizer"
     },
     {
-      "name" : "mushy peas",
-      "price" : 0.58,
-      "image" : "mushypeas.jpg",
-      "type" : "vegetables"
+      "postId" : 1,
+      "name" : "Bounce First Kit Booster",
+      "price" : 3.99,
+      "image" : "BounceFirstKitBooster.png",
+      "type" : "Energizer"
     },
     {
-      "name" : "corned beef",
-      "price" : 2.39,
-      "image" : "cornedbeef.jpg",
-      "type" : "meat"
+      "postId" : 1,
+      "name" : "Royal Jelly Based Liquid",
+      "price" : 2.47,
+      "image" : "RoyalJellyBasedLiquid.jpg",
+      "type" : "Energizer"
     },
     {
-      "name" : "tomato soup",
-      "price" : 1.40,
-      "image" : "tomatosoup.jpg",
-      "type" : "soup"
+      "postId" : 1,
+      "name" : "Pago de Penarrubia Organic Extra Virgin",
+      "price" : 2.37,
+      "image" : "PagoDePenarrubia.png",
+      "type" : "Daily Ingredients"
     },
     {
-      "name" : "chopped tomatoes",
-      "price" : 0.45,
-      "image" : "tomato.jpg",
-      "type" : "vegetables"
+      "postId" : 1,
+      "name" : "Flor De Sal d'es Trenc Natural",
+      "price" : 3.13,
+      "image" : "FlorDeSal.png",
+      "type" : "Daily Ingredients"
     },
     {
-      "name" : "chicken noodle soup",
-      "price" : 1.89,
-      "image" : "chickennoodle.jpg",
-      "type" : "soup"
+      "postId" : 1,
+      "name" : "Oatly Oat Drink 250mL",
+      "price" : 3.20,
+      "image" : "OatlyOatDrink250.png",
+      "type" : "Daily Ingredients"
     },
     {
-      "name" : "carrot and coriander soup",
+      "postId" : 1,
+      "name" : "Oatly Oat Drink 1L",
       "price" : 1.49,
-      "image" : "carrotcoriander.jpg",
-      "type" : "soup"
+      "image" : "OatlyOatDrink1.png",
+      "type" : "Daily Ingredients"
+    },
+    {
+      "postId" : 1,
+      "name" : "Sproud 1L 4Types",
+      "price" : 1.49,
+      "image" : "Sproud.jpg",
+      "type" : "Daily Ingredients"
+    },
+    {
+      "postId" : 1,
+      "name" : "Bamboo Charcoal Purifying Pads",
+      "price" : 3.40,
+      "image" : "BambooCharcoal.png",
+      "type" : "Cosmetics"
+    },
+    {
+      "postId" : 1,
+      "name" : "Green Tea Enzyme Cleanser",
+      "price" : 4.27,
+      "image" : "GreenTeaEnzymeCleanser.jpg",
+      "type" : "Cosmetics"
+    },
+    {
+      "postId" : 1,
+      "name" : "Inbody Scale",
+      "price" : 2.37,
+      "image" : "InbodyScale.jpg",
+      "type" : "Merchandise"
+    },
+    {
+      "postId" : 1,
+      "name" : "NEW Bikini Blend Jar",
+      "price" : 0.94,
+      "image" : "BikiniBlendJar.jpg",
+      "type" : "Merchandise"
+    },
+    {
+      "postId" : 1,
+      "name" : "MY GYM Bottle",
+      "price" : 0.85,
+      "image" : "mygymbottle.jpg",
+      "type" : "Merchandise"
+    },
+    {
+      "postId" : 1,
+      "name" : "Bounce First Kit Pouch",
+      "price" : 0.57,
+      "image" : "bouncefirstkitpouch.jpg",
+      "type" : "Merchandise"
+    },
+    {
+      "postId" : 1,
+      "name" : "My Beautiful Bag",
+      "price" : 2.09,
+      "image" : "mybeautifulbag.jpg",
+      "type" : "Merchandise"
+    },
+    {
+      "postId" : 1,
+      "name" : "Positive Hotel Carrier Bag",
+      "price" : 0.14,
+      "image" : "PositiveHotelCarrierBag.png",
+      "type" : "Merchandise"
     }
+
   ]

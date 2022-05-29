@@ -6,15 +6,29 @@
         <link rel="stylesheet" type="text/css" href = "main.css">
         <title>Sprint</title>
         <script>
-            fetch('products.json')
-                .then ( response => {
-                    if(!response.ok){
-                        throw new Error(`HTTP error: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then( json => initialize(json) )
-                .catch( err => console.error(`Fetch probelm: ${err.message}`));
+            //infinite scroll
+            let counter = 1;
+            document.addEventListener('DOMContentLoaded', load);
+            window.onscroll = () => {
+                if(window.innerHeight + window.scrollY >= document.body.offsetHeight){load();}
+            };
+
+            function load() {
+                const start = counter;
+                const end = start + 1;
+                counter = end + 1;
+
+                fetch('product.json')
+                .then(response => response.json())
+                .then(posts => {posts.forEach(add_post);})
+            };
+
+            function add_post(comments) {
+                const post = document.createElement('div');
+                post.className = 'post';
+                post.innerHTML = comments.body;
+                document.querySelector('#posts').append(post);
+            }
         </script>
     </head>
     <body>
@@ -42,8 +56,30 @@
                 <br>
             </div>
         </div>
+
         <div class="section">
             <h2>Never Miss Your Chance to Get these for Lower Price.</h2>
+            <form>
+                <div>
+                  <label for="category">Choose a category:</label>
+                  <select id="category">
+                    <option selected>All Products</option>
+                    <option>Anytizer</option>
+                    <option>Energizer</option>
+                    <option>Daily Ingredients</option>
+                    <option>Cosmetics</option>
+                    <option>Merchandise</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="searchTerm">Enter search term:</label>
+                  <input type="text" id="searchTerm" placeholder="Don't you need some anytizer?">
+                </div>
+                <div>
+                  <button>Filter results</button>
+                </div>
+            </form>
+
             <div class="itemlist flex-container">
                 <div class = "itemBox">
                     <div class="imageBox">
