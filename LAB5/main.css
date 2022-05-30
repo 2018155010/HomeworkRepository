@@ -25,15 +25,16 @@ html{
 
 }
 
-.itemBox{
+itemBox{
     flex:1;
-    max-width:25%;
+    box-sizing: border-box;
+    width:25%;
     padding: 0 4px;
     margin: 8px 0;
     justify-content: space-between;
 }
 
-.itemBox img{
+itemBox img{
     margin-top: 4px;
     vertical-align:middle;
 }
@@ -241,7 +242,18 @@ input[type=text] {
     font-size: 12pt;
     margin: 8px 0;
     padding: 16px 16px;
-    display: inline-block;
+    display: block;
+    border: 1px solid #757575;
+    border-radius: 3px;
+}
+
+select {
+    width: 320px;
+    height: 1.2em;
+    font-size: 12pt;
+    margin: 8px 0;
+    padding: 16px 16px;
+    display: block;
     border: 1px solid #757575;
     border-radius: 3px;
 }
@@ -383,7 +395,8 @@ img.banner:hover{
     }
     .itemBox{
         flex:100%;
-        max-width: 100%;
+        box-sizing: border-box;
+        width: 100%;
         background-color: blue;
     }
 }
@@ -395,7 +408,8 @@ img.banner:hover{
     }
     .itemBox{
         flex:50%;
-        max-width:48%;
+        box-sizing: border-box;
+        width:50%;
         justify-content: center;
     }
     
