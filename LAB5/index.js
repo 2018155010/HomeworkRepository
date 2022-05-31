@@ -96,6 +96,7 @@ function initialize(products) {
     function showProduct(objURL, product, i) {
         const section = document.createElement('div');
         const container = document.createElement('div');
+        const show = document.createElement('div');
         const img = document.createElement('img');
         const info = document.createElement('p');
         const price = document.createElement('p');
@@ -103,14 +104,14 @@ function initialize(products) {
 
         section.setAttribute('class', 'itemBox');
         container.setAttribute('class', 'imageBox');
+        show.setAttribute('class', 'clickable');
         info.setAttribute('class', 'product');
         price.setAttribute('class', 'price');
 
-        container.setAttribute('class', 'clickable');
 
-        container.id = i;
-        container.style.opacity = "0";
-        container.onclick = function(){
+        show.id = i;
+        show.style.opacity = "0";
+        show.onclick = function(){
             var x = document.getElementById(this.id);
             if(x.style.opacity === "0"){
                 x.style.opacity = "1";
@@ -130,8 +131,9 @@ function initialize(products) {
         main.appendChild(section);
         section.appendChild(container);
         container.appendChild(img);
-        section.appendChild(price);
-        section.appendChild(img);
+        section.appendChild(show);
+        show.appendChild(price);
+        show.appendChild(img);
     }
 }
 
@@ -157,14 +159,13 @@ function load() {
 
             section.setAttribute('class', 'itemBox');
             container.setAttribute('class', 'imageBox');
+            show.setAttribute('class', 'clickable');
             info.setAttribute('class', 'product');
             price.setAttribute('class', 'price');
 
-            container.setAttribute('class', 'clickable');
-
-            container.id = start;
-            container.style.opacity = "0";
-            container.onclick = function(){
+            show.id = start;
+            show.style.opacity = "0";
+            show.onclick = function(){
                 var x = document.getElementById(this.id);
                 if(x.style.opacity === "0"){
                     x.style.opacity = "1";
@@ -183,12 +184,12 @@ function load() {
             img.src = url;
             img.alt = products[start].name;
 
-    
             main.appendChild(section);
             section.appendChild(container);
             container.appendChild(img);
-            section.appendChild(price);
-            section.appendChild(img);
+            section.appendChild(show);
+            show.appendChild(price);
+            show.appendChild(img);
         }
     })
         .catch(console.error);
