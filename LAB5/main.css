@@ -25,16 +25,15 @@ html{
 
 }
 
-itemBox{
+.itemBox{
     flex:1;
-    box-sizing: border-box;
-    width:25%;
+    max-width:25%;
     padding: 0 4px;
     margin: 8px 0;
     justify-content: space-between;
 }
 
-itemBox img{
+.itemBox img{
     margin-top: 4px;
     vertical-align:middle;
 }
@@ -55,9 +54,25 @@ footer{
     margin: auto;
 }
 
+items{
+    display:flex;
+    flex-wrap:wrap;
+    padding: 0 4px;
+    margin-top: 64px;
+    margin-bottom: 20px;
+}
+
+filter{
+    display:block;
+}
+
+main{
+    display: block;
+}
+
 
 /*content*/
-.section{
+.container{
     text-align: left;
     margin-top: 1em;
     margin-bottom: 5em;
@@ -78,17 +93,6 @@ footer{
     margin-top: 0px;
     margin-bottom: 20px;
 }
-
-.itemlist{
-    /*width:1020px;
-    justify-content: center;*/
-    display:flex;
-    flex-wrap:wrap;
-    padding: 0 4px;
-    margin-top: 64px;
-    margin-bottom: 20px;
-}
-
 
 .imageBox{
     justify-content: center;
@@ -191,7 +195,7 @@ p{
     line-height: 1.5;
     letter-spacing: -0.016em;
 }
-product{
+.product{
     display:block;
     font-size: 18px;
     font-weight: 700;
@@ -199,7 +203,7 @@ product{
     line-height: 1.6;
     margin: 8px 0 0 0;
 }
-price{
+.price{
     display:block;
     font-size: 16px;
     font-weight:500;
@@ -242,18 +246,7 @@ input[type=text] {
     font-size: 12pt;
     margin: 8px 0;
     padding: 16px 16px;
-    display: block;
-    border: 1px solid #757575;
-    border-radius: 3px;
-}
-
-select {
-    width: 320px;
-    height: 1.2em;
-    font-size: 12pt;
-    margin: 8px 0;
-    padding: 16px 16px;
-    display: block;
+    display: inline-block;
     border: 1px solid #757575;
     border-radius: 3px;
 }
@@ -375,10 +368,29 @@ h3.slide{
     animation-duration:2s;
 }
 
+.itemlist{
+    /*width:1020px;
+    justify-content: center;*/
+    display:flex;
+    flex-wrap:wrap;
+    padding: 0 4px;
+    margin-top: 64px;
+    margin-bottom: 20px;
+}
 .itemBox img:hover{
     transform: scale(1.3, 1.3);
     transition-duration: 2s;
     transition-timing-function: ease-in-out;
+}
+
+.itemBox .clickable {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: aliceblue;
+    font-size: x-large;
 }
 
 img.banner:hover{
@@ -395,8 +407,7 @@ img.banner:hover{
     }
     .itemBox{
         flex:100%;
-        box-sizing: border-box;
-        width: 100%;
+        max-width: 100%;
         background-color: blue;
     }
 }
@@ -408,8 +419,7 @@ img.banner:hover{
     }
     .itemBox{
         flex:50%;
-        box-sizing: border-box;
-        width:50%;
+        max-width:48%;
         justify-content: center;
     }
     
