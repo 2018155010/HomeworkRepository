@@ -6,21 +6,46 @@
         <link rel="stylesheet" type="text/css" href = "main.css">
         <title>Sprint</title>
         <script>
-            fetch('product.json')
-            .then( response => {
-                if(!response.ok) {
-                     throw new Error(`HTTP error: ${response.status}`);
+            //infinite scroll
+            let counter = 1;
+            document.addEventListener('DOMContentLoaded', load);
+            window.onscroll = () => {
+                if(window.innerHeight + window.scrollY >= document.body.offsetHeight){
+                    load();
                 }
-                return response.json();
-            })
-            .then( json => initialize(json) )
-            .catch( err => console.error(`Fetch problem: ${err.message}`) );
+            };
+
+            function load() {
+                const start = counter;
+                const end = start + 1;
+                counter = end + 1;
+
+                fetch('product.json')
+                    .then(response => {
+                        if(!response.ok) {
+                        throw new Error(`HTTP error: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then( json => initialize(json) )
+                    .then( posts => {posts.forEach(add_post);})
+                    .catch( err => console.error(`Fetch problem: ${err.message}`) );
+            };
+
+            function add_post(comments) {
+                const post = document.createElement('div');
+                post.className = 'itemBox';
+                post.innerHTML = comments.body;
+                document.querySelector('.itemlist flex-container').append(post);
+            }
+
+            
 
             function initialize(products){
                 const category = document.querySelector(`#category`);
                 const searchTerm = document.querySelector(`#searchTerm`);
                 const searchBtn = document.querySelector(`button`);
-                const main = document.querySelector(`main`);
+                const main = document.querySelector(`.itemlist flex-container`);
 
                 let lastCategory = category.value;
                 let lastSearch = '';
@@ -59,7 +84,7 @@
                     if(searchTerm.value.trim() === '') {
                         finalGroup = categoryGroup;
                     } else {
-                        const lowerCaseSearchTerm = searcTerm.vlaue.trim().toLowerCase();
+                        const lowerCaseSearchTerm = searchTerm.value.trim().toLowerCase();
                         finalGroup = categoryGroup.filter( product => product.name.includes(lowerCaseSearchTerm));
                     }
                     updateDisplay();
@@ -82,7 +107,7 @@
                 }
 
                 function fetchBlob(product) {
-                    const url = `img/${product.image}`;
+                    const url = `./img/${product.image}`;
                     fetch(url)
                         .then( response => {
                             if (!response.ok){
@@ -96,48 +121,26 @@
 
                 function showProduct(blob, product){
                     const objectURL = URL.createObjectURL(blob);
-                    const section = document.createElement('itemBox');
-                    const heading = document.createElement('product');
-                    const para = documnet.createElement('price');
-                    const image = document.createElement('img');
+                    const section = document.createElement('div');
+                    const image = document.createElement('.imageBox img');
+                    const heading = document.createElement('div product');
+                    const para = documnet.createElement('div price');
+                    
 
                     section.setAttribute('class', product.type);
-                    heading.textContent = product.name.replace(product.name.charAt(0), product.name.charAt(0).toUpperCase());
-                    para.textContent = `$${product.price.toFixed(2)}`;
+                    para.textContent = `$${product.price}`;
 
                     image.src = objectURL;
                     image.alt = product.name;
 
                     main.appendChild(section);
-                    section.appendChile(heading);
-                    section.appendChild(para);
                     section.appendChild(image);
+                    section.appendChild(heading);
+                    section.appendChild(price);
                 }
 
             }
-            //infinite scroll
-            let counter = 1;
-            document.addEventListener('DOMContentLoaded', load);
-            window.onscroll = () => {
-                if(window.innerHeight + window.scrollY >= document.body.offsetHeight){load();}
-            };
 
-            function load() {
-                const start = counter;
-                const end = start + 1;
-                counter = end + 1;
-
-                fetch('product.json')
-                .then(response => response.json())
-                .then(posts => {posts.forEach(add_post);})
-            };
-
-            function add_post(comments) {
-                const post = document.createElement('div');
-                post.className = 'post';
-                post.innerHTML = comments.body;
-                document.querySelector('#posts').append(post);
-            }
         </script>
     </head>
     <body>
