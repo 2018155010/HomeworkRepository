@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9LT5M0YQ8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q9LT5M0YQ8');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="프레첼" />
+    <meta property="og:description" content="돈 모아서 받는 사람이 원하는 선물 도착!" />
+    <meta property="og:image" content="/static/back_profile.png" />
+    <title>프레첼</title>
+    <link rel="stylesheet" type="text/css" href="static/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script>
+        window.onload = listing("/profilelist");
+
+        function enterName() {
+            if (window.event.keyCode == 13) {
+                searchWithName();
+            }
+        }
+        function enterPhone() {
+            if (window.event.keyCode == 13) {
+                searchWithPhone();
+            }
+        }
+        function searchWithName() {
+            let search_name = $('#name_search').val();
+            let baseUrlString = "/profilelist";
+            if (search_name) {
+                baseUrlString = baseUrlString + '?name=' + search_name;
+            }
+            listing(baseUrlString);
+        }
+        function searchWithPhone() {
+            let search_name = $('#phone_search').val();
+            let baseUrlString = "/profilelist";
+            if (search_name) {
+                baseUrlString = baseUrlString + '?phonenumber=' + search_name;
+            }
+            listing(baseUrlString);
+        }
+
+        function listing(urlString) {
+            // 1. 리뷰 목록을 서버에 요청하기
+            // 2. 요청 성공 여부 확인하기
+            // 3. 요청 성공했을 때 리뷰를 올바르게 화면에 나타내기
+            $.ajax({
+                type: "GET",
+                url: urlString,
+                data: {},
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        let profiles = response['profiles'];
+                        $('#box').html('');
+                        for (let i = 0; i < profiles.length; i++) {
+                            make_card(profiles[i]['name'], profiles[i]['birthday'], profiles[i]['phonenumber'], profiles[i]['_id']);
+                        }
+
+                    } else {
+                        alert('프로필을 불러오지 못했습니다');
+                    }
+                }
+            })
+        }
+        function make_card(name, birthday, phonenumber, userID) {
+            let temp_html = `
+            <div class="search-result-cards" onclick="window.location.href = '/giftprofile?id=${userID}'">
+                
+                <div class="search-content">
+                    <div class="search-name">
+                        <div class="search-name-text">${name}</div>
+                    </div>
+                    <div class="search-incontent">
+                        <img src='static/no_profile.png' style="margin:1.5em;">
+                        <table class="search-table">
+                            <tr>
+                                <td class="search-table-bday">생일</td>
+                                <td class="search-bday">${birthday}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>`;
+            $('#box').append(temp_html);
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="main-navi">
+        <a href="/">
+            <img class="logo" src='static/logo2.png'>
+        </a>
+    </div>
+    <div class="banner_slide" onclick="window.location.href = '/service'">
+        <img src="static/banner_text.png" class="banner_text">
+    </div>
+
+    <div class="wish">위시리스트 검색</div>
+    <div class="one_search">
+        <label class="search_explain">닉네임으로 검색</label>
+        <input placeholder="닉네임으로 검색하기" id="name_search" type="text" onkeyup="enterName()" maxlength="10">
+        <button class="search_button" onclick="searchWithName()"><img src="static/search_button.png"></button>
+    </div>
+    <div class="one_search">
+        <label class="search_explain">전화번호로 검색</label>
+        <input placeholder="-하이픈 없이 번호로 검색하기" id="phone_search" type="text" onkeyup="enterPhone()"
+        maxlength="11"
+        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+    <button class="search_button" onclick="searchWithPhone()"><img src="static/search_button.png"></button>
+    </div>
+
+    <div class="search-result" id="box">
+
+            <!--cards displayed here-->
+
+    </div>
+
+    <!--
+            <div class="search-result">
+        <div class="box_wrapper" id="box">
+        </div>
+    </div>
+    -->
+
+
+
+    <!--wishlist floating button-->
+    <div>
+        <a class="wish_button" href="registration" style="text-decoration:none">
+            <div>내 위시리스트 등록</div>
+        </a>
+    </div>
+    <div class="footer">
+        <img src="static/warning.png" style="width: 100%; margin: 0;">
+    </div>
+</body>
+
+</html>

@@ -1,92 +1,132 @@
-//상단에 npm으로 설치한 패키지 express를 불러옴
-//const로 선언하며 다른 값으로 덮어쓰는 것 방지
-const express = require("express");
-
-//express 인스턴스 생성
+const express = require('express');
 const app = express();
+const sqlite3 = require('sqlite');
+const sqlite = require('sqlite');
 
-//POST 의 body에 사용자 입력을 받을 수 있도록 설정
-app.use(express.json());
-app.use(express.urlencoded({ extended: true}));
-
-//파일을 읽고 쓸 수 있게 해주는 기본 모듈
-//npm install 로 설치할 필요가 없이 내장되어 있음
-const fs = require("fs");
-
-const req = require("express/lib/request");
-const res = require("express/lib/response");
-const { send } = require("process");
-
-//static file을 서버에서 전달하도록 설정
 app.use(express.static("public"));
 
-//라우트 추가 (인터넷의 주소에 대응. "/"의 경우에는 root 페이지를 뜻함)
-app.get("/", (_req, res)=>{
-    res.send("Hello World!");
+app.get("/", function(req,res){res.send("/public/index.html")});
+app.get("/login.html", function(req,res){res.send("/public/login.html")});
+app.get("/signup.html", function(req,res){res.send("/public/signup.html")});
+app.get("/product/:product_id", function(req,res){res.send("/public/product.html")})
+
+const fs= require("fs");
+
+async function getDBConnection(){
+    const db = await sqlite.open({
+        filename: 'product.db',
+        driver: sqlite3.Database
+    });
+    return db;
+}
+
+app.get('/', async function(req,res){
+    let db = await getDBConnection();
+    let rows = await db.all('select * from products');
+    await db.close();
+    myproduct_list = '';
+    for (var i=0; i<rows.length; i++){
+        myproduct_list+='<div class="itemBox"><div class="imageBox"><img src="'+rows[i][product_image]+'" width = "100%"></div><div><product>'+rows[i][product_title]+'</product><price>'+rows[i][product_price]+'</price></div></div>'
+    }
+    console.log(myproduct_list)
+    var output = 
+    `<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset = "utf-8">
+            <link rel="stylesheet" type="text/css" href = "./public/main.css">
+            <title>Sprint</title>
+        </head>
+        <body>
+            <header>
+                <h3 class="slide forHeader"><em>Sprint</em></h3>
+                <div class="nav">
+                    <a href="#">Best Items</a>
+                    <a href="#">Daily Meal</a>
+                    <a href="#">Well-Balanced</a>
+                    <a href="#">Skin-wellness</a>
+                    <a href="#">MD Picks</a>
+                    <a href="#">Life Goods</a>
+                    <a href="login.html">Log In</a>
+                    <a href="signup.html">Sign Up</a>
+                </nav>         
+            </header>
+            <div class="section">
+                <div class = "col1-1 centerText">
+                    <h1>Spring Up Your Energy!</h1>
+                    <h2>Accelerate for new start.</h2>
+                    <img class="banner" src = "img/main.png" width="300px" height="300px">
+                    <br>
+                    <p class="centerText">Get up, and Get Ready.</p>
+                    <a>Find out more details</a>
+                    <br>
+                </div>
+            </div>
+            <div class="section">
+                <h2>Never Miss Your Chance to Get these for Lower Price.</h2>
+                <div class="itemlist flex-container">
+                    ${myproduct_list}
+                </div>
+            </div>
+            <footer class="infoColor centerText">
+                <h3>For more, contact us</h3>
+                <a href="commerce@sprint.com">commerce@sprint.com</a>
+            </footer>
+        </body>
+    </html>
+    `;
+    res.send(output)
 });
 
-//Json을 출력해주는 라우트
-app.get("/posts", function (_req, res){
-    res.json([
-        { postId: 1, title: "Hello!" },
-        { postId: 2, title: "World!" },
-    ]);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-});
-
-app.post("/write-file", function(req, res) {
+app.post("/product/:product_id", function(req,res){
     console.log(req.body);
 
-    //만약 post body에 content 라는 값이 없으면 400 BAD REQUEST 에러
-    if (!req.body?.content) {
-        res.status(400).send("400 에러! content가 post body에 없습니다.");
+    if(!req,body?.content){
+        res.status(400).send("400에러! content가 postbody에 없습니다");
         return;
     }
 
-    fs.writeFile("test.txt", req.body.content, function (error, data) {
-        if(error){
-            //파일 저장 중 문제가 발생하면 500 서버 에러 변환
-            res.status(500).send("500 서버 에러!");
-        } else {
-            //파일 저장에 성공했다면 201 코드 반환
-            res.status(201).send("파일 생성 성공!");
-        }
-    });
-});
-
-app.get("/read-file", function (req, res){
-    console.log(req.query);
-
-    if(!req.query?.file){
-        res.status(400)/send("400에러! file이 query parameters에 없습니다.");
-        return;
-    }
-
-    fs.readFile(req.query.file, "utf-8", async function (error, data) {
+    fs.readFile("comment.json", "utf-8", async function (error, data){
         if(error){
             if(error.code === "ENOENT"){
-                //파일이 없을 때는 404 에러 반환
-                res.status(404).send(`${req.query.file}이 없습니다.`);
+                res.status(404).send(`${req.query.file}이 없습니다`);
             } else {
-                res.status(500).send("500 서버 에러!");
+                res.status(500).send("500 서버 에러");
             }
         } else {
-            //파일을 읽어서 string으로 변환하여 전송
-            res.status(200).send(data.toString());
+            const comment = JSON.parse(data);
+            comment.push(req.body)
+            fs.writeFile('comment.json', JSON.stringify(comment), function (error, data) {
+                if(error){
+                    res.status(500).send("500서버 에러");
+                } else {
+                    res.status(201).send("파일 생성 성공");
+                }
+            });
         }
     });
-});
 
-//어떤 포트를 통해 서버에 접속하게 할 것인지 지정
-//process.env.PORT: 서버의 환경 변수에 등록된 port 정보를 이용
-//만약에 환경 변수에 PORT 정보가 등록되어 있지 않다면 8000번을 기본값으로 이용함
-const PORT = process.env.PORT || 8000;
-
-//서버가 PORT 에 연결됐을 때 수행할 함수 정의
-app.listen(PORT, () => {
-    console.log("서버가 실행됐습니다.");
-    console.log(`서버주소: http://localhost:${PORT}`);
 });
 
 
 
+
+app.get('/product/:product_id', async function(req,res){
+    let db = await getDBConnection();
+    await db.run(`insert into products(,) values()`);
+    let rows = await db.all('select * from products');
+    await db.close();
+
+    console.log(myproduct)
+    var output = 
+ 
+    res.send(output)
+});
+
+var port = 3000;
+app.listen(port, function(){
+    console.log('server on! http://localhost:'+port);
+});
